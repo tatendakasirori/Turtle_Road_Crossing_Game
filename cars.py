@@ -13,6 +13,7 @@ class Car(t.Turtle):
     def __init__(self,colors = hex_colors):
         super().__init__()
         self.penup()
+        self.speed("fastest")
         self.shape("square")
         self.shapesize(stretch_wid=0.2, stretch_len=0.9)
         self.setx(r.randint(-280,280))

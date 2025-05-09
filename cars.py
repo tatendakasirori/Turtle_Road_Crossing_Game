@@ -15,6 +15,8 @@ class Car(t.Turtle):
         self.penup()
         self.speed("fastest")
         self.shape("square")
+        self.setheading(180)    
+        self.move_speed = 10
         self.shapesize(stretch_wid=0.2, stretch_len=0.9)
         self.setx(r.randint(-280,280))
         self.sety(r.randint(-150,150))

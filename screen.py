@@ -26,11 +26,14 @@ for _ in range(20):
     cars.append(car)
 # increases num of cars after each level pass
 def increase_difficulty(cars):
+    screen.tracer(0)
     for _ in range(3):
       cars.append(Car())
+    screen.tracer(1)
     print(len(cars))
 # resets to 20 cars after level fail
 def level_1(cars):
+   level.reset_level()
    cars = cars[:20]
    return cars
 
@@ -53,18 +56,23 @@ while game_on:
     check_collison(cars)
     for car in cars:
        check_collison(cars) 
-       time.sleep(0.05)
+
+
+        #check if car is off the screen
        if car.xcor() <= -280:
            car.hideturtle()
            car.resert_car()
            car.showturtle()
-       car.setx(car.xcor() - 10)
+       car.forward(car.move_speed)
+       time.sleep(level.sleep_time)    
+
+    # check if crosser has reached the top of the screen
+    # if so, increase the level and reset the crosser
        if crosser.ycor() >= 160:
         increase_difficulty(cars)
         level.increase_level()
         crosser.back_2_start()
 
- 
 
 
 screen.exitonclick()
